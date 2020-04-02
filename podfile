@@ -1,0 +1,12 @@
+platform :ios, '13.0'
+use_frameworks!
+
+target 'MarvelFinalImplementation' do
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+
+  target 'MarvelFinalImplementationTests' do
+	inherit! :search_paths
+    end
+end
