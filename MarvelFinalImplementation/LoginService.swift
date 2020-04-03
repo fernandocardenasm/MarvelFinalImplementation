@@ -8,7 +8,17 @@
 import Combine
 import Foundation
 
-class FirebaseLoginServiceImpl<Authentication: FBAuth> {
+protocol FirebaseLoginService {
+    var isLoggedIn: Bool { get }
+
+    func createUser(withEmail email: String, password: String) -> AnyPublisher<Void, Error>
+
+    func signIn(withEmail email: String, password: String) -> AnyPublisher<Void, Error>
+
+    func signOut() throws
+}
+
+class FirebaseLoginServiceImpl<Authentication: FBAuth>: FirebaseLoginService {
     let auth: Authentication
 
     init(auth: Authentication) {

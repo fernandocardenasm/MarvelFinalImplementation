@@ -8,22 +8,38 @@
 
 import SwiftUI
 import Combine
+import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
+
+    private let loginService: FirebaseLoginService = FirebaseLoginServiceImpl(auth: Auth.auth())
+
     // Input
     @Published var email = ""
     @Published var password = ""
+    @Published var buttonPressed = false
 
     // Oupt
-    @Published var isValid = false
+    @Published var buttonEnabled = false
 
     private var cancellableSet: Set<AnyCancellable> = []
 
     init() {
         // Setup isValid
-        areFieldsValidPublisher().receive(on: RunLoop.main)
-            .map { $0 }
-            .assign(to: \.isValid, on: self)
+        Publishers.CombineLatest(areFieldsValidPublisher(), $buttonPressed).receive(on: RunLoop.main)
+            .map { fieldsValid, pressed in
+                fieldsValid && !pressed
+        }
+        .assign(to: \.buttonEnabled, on: self)
+        .store(in: &cancellableSet)
+
+        $buttonPressed.sink { [weak self] pressed in
+            guard let strongSelf = self,
+                pressed else { return }
+
+            // Run it async, see the best way to receive values
+//            strongSelf.loginService.signIn(withEmail: strongSelf.email, password: strongSelf.password)
+        }
         .store(in: &cancellableSet)
     }
 
@@ -62,10 +78,10 @@ struct ContentView: View {
             TextField("Enter your email...", text: $loginViewModel.email)
             TextField("Enter your password...", text: $loginViewModel.password)
             Button(action: {
-                print("tapped!")
+                self.loginViewModel.buttonPressed = true
             }) {
                 Text("Sign In")
-            }.disabled(!loginViewModel.isValid)
+            }.disabled(!loginViewModel.buttonEnabled)
         }
     }
 
