@@ -34,13 +34,30 @@ class LoginViewModel: ObservableObject {
         .store(in: &cancellableSet)
 
         $buttonPressed.sink { [weak self] pressed in
-            guard let strongSelf = self,
-                pressed else { return }
+            guard pressed else { return }
 
-            // Run it async, see the best way to receive values
-//            strongSelf.loginService.signIn(withEmail: strongSelf.email, password: strongSelf.password)
+            self?.signIn()
+
         }
         .store(in: &cancellableSet)
+    }
+
+    func signIn() {
+        loginService.signIn(withEmail: email, password: password).subscribe(on: DispatchQueue.global())
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { [weak self] result in
+                switch result {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("SignIn - Error: \(error)")
+                }
+                self?.buttonPressed = false
+                },
+                  receiveValue: { _ in
+
+            })
+            .store(in: &cancellableSet)
     }
 
     func isEmailValidPublisher() -> AnyPublisher<Bool, Never> {
@@ -64,8 +81,20 @@ class LoginViewModel: ObservableObject {
         Publishers.CombineLatest(isEmailValidPublisher(), isPasswordValidPublisher()).debounce(for: 0.2, scheduler: RunLoop.main)
             .map { emailValid, passwordValid in
                 return emailValid && passwordValid
-            }.print()
+            }
         .eraseToAnyPublisher()
+    }
+}
+
+struct ActivityIndicator: UIViewRepresentable {
+    @Binding var shouldAnimate: Bool
+
+    func makeUIView(context: Context) -> UIActivityIndicatorView {
+        UIActivityIndicatorView()
+    }
+
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
+        shouldAnimate ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }
 
@@ -82,6 +111,7 @@ struct ContentView: View {
             }) {
                 Text("Sign In")
             }.disabled(!loginViewModel.buttonEnabled)
+            ActivityIndicator(shouldAnimate: $loginViewModel.buttonPressed)
         }
     }
 
