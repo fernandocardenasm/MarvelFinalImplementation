@@ -5,6 +5,7 @@
 //  Created by Fernando Cardenas on 23.02.20.
 //  Copyright © 2020 fernandocardenasm. All rights reserved.
 //
+
 import Combine
 import Foundation
 
@@ -32,7 +33,7 @@ class FirebaseLoginServiceImpl<Authentication: FBAuth>: FirebaseLoginService {
     func createUser(withEmail email: String, password: String) -> AnyPublisher<Void, Error> {
         Deferred { [auth] in
             return Future<Void, Error> { promise in
-                auth.createUser(withEmail: email, password: password) { (authDataResult, error) in
+                auth.createUser(withEmail: email.lowercased(), password: password) { (authDataResult, error) in
                     if let error = error {
                         promise(.failure(error))
                     }
@@ -52,7 +53,7 @@ class FirebaseLoginServiceImpl<Authentication: FBAuth>: FirebaseLoginService {
 
         Deferred { [auth] in
             return Future<Void, Error> { promise in
-                auth.signIn(withEmail: email, password: password) { (authDataResult, error) in
+                auth.signIn(withEmail: email.lowercased(), password: password) { (authDataResult, error) in
                     if let error = error {
                         promise(.failure(error))
                     }

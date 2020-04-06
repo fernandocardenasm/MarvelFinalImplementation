@@ -10,7 +10,7 @@
 		0CDA3963EDB32AB13DAB242E /* Pods_MarvelFinalImplementationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 607C3E7E73888B449AA1D683 /* Pods_MarvelFinalImplementationTests.framework */; };
 		A49B2AF124013A8A00B52626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF024013A8A00B52626 /* AppDelegate.swift */; };
 		A49B2AF324013A8A00B52626 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF224013A8A00B52626 /* SceneDelegate.swift */; };
-		A49B2AF524013A8A00B52626 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF424013A8A00B52626 /* ContentView.swift */; };
+		A49B2AF524013A8A00B52626 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF424013A8A00B52626 /* SigninView.swift */; };
 		A49B2AF724013A8C00B52626 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A49B2AF624013A8C00B52626 /* Assets.xcassets */; };
 		A49B2AFA24013A8C00B52626 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A49B2AF924013A8C00B52626 /* Preview Assets.xcassets */; };
 		A49B2AFD24013A8C00B52626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49B2AFB24013A8C00B52626 /* LaunchScreen.storyboard */; };
@@ -19,6 +19,10 @@
 		A49B2B1624013B0600B52626 /* FBAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2B1524013B0600B52626 /* FBAuthentication.swift */; };
 		A4AB490D2437D154009CD810 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4AB490C2437D154009CD810 /* GoogleService-Info.plist */; };
 		A4B55F5724029AA800519139 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B55F5624029AA800519139 /* LoginService.swift */; };
+		A4E56E8D243BBE430028894E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E8C243BBE430028894E /* SignupView.swift */; };
+		A4E56E8F243BBE8E0028894E /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E8E243BBE8E0028894E /* SignupViewModel.swift */; };
+		A4E56E91243BBEF00028894E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E90243BBEF00028894E /* ActivityIndicator.swift */; };
+		A4E56E93243BBF180028894E /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E92243BBF180028894E /* SigninViewModel.swift */; };
 		F8D007463BE0D4C54FB3CE39 /* Pods_MarvelFinalImplementation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F9DDA157C70C893AC404B9 /* Pods_MarvelFinalImplementation.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +44,7 @@
 		A49B2AED24013A8A00B52626 /* MarvelFinalImplementation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelFinalImplementation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49B2AF024013A8A00B52626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A49B2AF224013A8A00B52626 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A49B2AF424013A8A00B52626 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A49B2AF424013A8A00B52626 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
 		A49B2AF624013A8C00B52626 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A49B2AF924013A8C00B52626 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A49B2AFC24013A8C00B52626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +56,10 @@
 		A49B2B1524013B0600B52626 /* FBAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthentication.swift; sourceTree = "<group>"; };
 		A4AB490C2437D154009CD810 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4B55F5624029AA800519139 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		A4E56E8C243BBE430028894E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		A4E56E8E243BBE8E0028894E /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		A4E56E90243BBEF00028894E /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		A4E56E92243BBF180028894E /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		C1F9DDA157C70C893AC404B9 /* Pods_MarvelFinalImplementation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelFinalImplementation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D15AD97F4F9A7C029B92C4 /* Pods-MarvelFinalImplementation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelFinalImplementation.release.xcconfig"; path = "Target Support Files/Pods-MarvelFinalImplementation/Pods-MarvelFinalImplementation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,13 +121,17 @@
 				A49B2B1424013AE400B52626 /* API */,
 				A49B2AF024013A8A00B52626 /* AppDelegate.swift */,
 				A49B2AF224013A8A00B52626 /* SceneDelegate.swift */,
-				A49B2AF424013A8A00B52626 /* ContentView.swift */,
 				A49B2AF624013A8C00B52626 /* Assets.xcassets */,
 				A49B2AFB24013A8C00B52626 /* LaunchScreen.storyboard */,
 				A49B2AFE24013A8C00B52626 /* Info.plist */,
 				A4AB490C2437D154009CD810 /* GoogleService-Info.plist */,
 				A49B2AF824013A8C00B52626 /* Preview Content */,
 				A4B55F5624029AA800519139 /* LoginService.swift */,
+				A49B2AF424013A8A00B52626 /* SigninView.swift */,
+				A4E56E92243BBF180028894E /* SigninViewModel.swift */,
+				A4E56E8C243BBE430028894E /* SignupView.swift */,
+				A4E56E8E243BBE8E0028894E /* SignupViewModel.swift */,
+				A4E56E90243BBEF00028894E /* ActivityIndicator.swift */,
 			);
 			path = MarvelFinalImplementation;
 			sourceTree = "<group>";
@@ -328,11 +340,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4E56E8D243BBE430028894E /* SignupView.swift in Sources */,
 				A49B2AF124013A8A00B52626 /* AppDelegate.swift in Sources */,
+				A4E56E93243BBF180028894E /* SigninViewModel.swift in Sources */,
+				A4E56E8F243BBE8E0028894E /* SignupViewModel.swift in Sources */,
 				A4B55F5724029AA800519139 /* LoginService.swift in Sources */,
 				A49B2AF324013A8A00B52626 /* SceneDelegate.swift in Sources */,
-				A49B2AF524013A8A00B52626 /* ContentView.swift in Sources */,
+				A49B2AF524013A8A00B52626 /* SigninView.swift in Sources */,
 				A49B2B1324013ADE00B52626 /* FBFirestore.swift in Sources */,
+				A4E56E91243BBEF00028894E /* ActivityIndicator.swift in Sources */,
 				A49B2B1624013B0600B52626 /* FBAuthentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
