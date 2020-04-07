@@ -16,21 +16,45 @@ struct SigninView: View {
 
     var body: some View {
         VStack {
-            Text("Sign In")
-            TextField("Enter your email...", text: $loginViewModel.email)
-            TextField("Enter your password...", text: $loginViewModel.password)
+            Text("Welcome to the Marvel world")
+                       .padding()
+                       .font(.largeTitle)
+                       .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+            HStack {
+                Image(systemName: "person.circle")
+                TextField("Enter your email...", text: $loginViewModel.email)
+                    .foregroundColor(.white)
+            }.padding(.horizontal, 60)
+            .padding(.vertical, 10)
+
+            HStack {
+                Image(systemName: "lock.circle")
+                           TextField("Enter your password...", text: $loginViewModel.password)
+                     .foregroundColor(.white)
+            }.padding(.horizontal, 60)
+            .padding(.vertical, 10)
+
             Button("Sign In") {
                 self.loginViewModel.buttonPressed = true
-            }.disabled(!loginViewModel.buttonEnabled)
+                }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40).background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(40)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 60)
+
+            .disabled(!loginViewModel.buttonEnabled)
 
             ActivityIndicator(shouldAnimate: $loginViewModel.buttonPressed)
 
-            Button("Sign up") {
+            Text("Do not have an account?").foregroundColor(.white).padding()
+            Button("Sign up here") {
                 self.presentingSignUpView = true
             }.sheet(isPresented: $presentingSignUpView) {
                 SignupView(presentedAsModal: self.$presentingSignUpView)
             }
-        }
+            Spacer()
+        }.background(Color.red)
     }
 }
 
