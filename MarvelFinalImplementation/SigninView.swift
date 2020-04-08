@@ -21,23 +21,14 @@ struct SigninView: View {
                        .font(.largeTitle)
                        .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-            HStack {
-                Image(systemName: "person.circle")
-                TextField("Enter your email...", text: $loginViewModel.email)
-                    .foregroundColor(.white)
-            }.padding(.horizontal, 60)
-            .padding(.vertical, 10)
 
-            HStack {
-                Image(systemName: "lock.circle")
-                           TextField("Enter your password...", text: $loginViewModel.password)
-                     .foregroundColor(.white)
-            }.padding(.horizontal, 60)
-            .padding(.vertical, 10)
+            LoginFieldsView(email: $loginViewModel.email, password: $loginViewModel.password)
+                .padding(.horizontal, 60)
 
             Button("Sign In") {
                 self.loginViewModel.buttonPressed = true
-                }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40).background(Color.blue)
+            }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40)
+                .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(40)
                 .padding(.vertical, 10)
@@ -55,6 +46,52 @@ struct SigninView: View {
             }
             Spacer()
         }.background(Color.red)
+    }
+}
+
+struct LoginButtonStyle: ButtonStyle {
+
+    @Binding var enabled: Bool
+
+    func makeBody(configuration: Self.Configuration) -> some View {
+      configuration.label
+        .background(background(configuration: configuration))
+        .foregroundColor(.white)
+        .cornerRadius(40)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 60)
+    }
+
+    func background(configuration: Self.Configuration) -> Color {
+        if configuration.isPressed {
+            return Color.orange
+        } else if enabled {
+            return Color.blue
+        } else {
+            return Color.gray
+        }
+    }
+}
+
+struct LoginFieldsView: View {
+    @Binding var email: String
+    @Binding var password: String
+
+    var body: some View {
+        VStack {
+            HStack {
+                Image(systemName: "person.circle")
+                TextField("Enter your email...", text: $email)
+                    .foregroundColor(.white)
+            }.padding(.vertical, 10)
+
+            HStack {
+                Image(systemName: "lock.circle")
+                TextField("Enter your password...", text: $password)
+                    .foregroundColor(.white)
+            }
+                .padding(.vertical, 10)
+        }
     }
 }
 

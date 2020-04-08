@@ -14,17 +14,32 @@ struct SignupView: View {
 
     var body: some View {
         VStack {
-            Text("Sign Up")
-            TextField("Enter your email...", text: $signupViewModel.email)
-            TextField("Enter your password...", text: $signupViewModel.password)
+            Text("Sign Up to the Marvel App")
+                   .padding()
+                   .font(.largeTitle)
+                   .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+
+            LoginFieldsView(email: $signupViewModel.email, password: $signupViewModel.password)
+            .padding(.horizontal, 60)
+            
             Button("Sign Up") {
                 self.signupViewModel.buttonPressed = true
-            }.disabled(!signupViewModel.buttonEnabled)
+            }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40).background(signupViewModel.buttonEnabled ? Color.blue : Color.gray)
+            .foregroundColor(.white)
+            .cornerRadius(40)
+            .padding(.vertical, 10)
+            .padding(.horizontal, 60)
+            .disabled(!signupViewModel.buttonEnabled)
 
             ActivityIndicator(shouldAnimate: $signupViewModel.buttonPressed)
 
             Button("dismiss") { self.dissmiss() }
-        }.onReceive(signupViewModel.$signUpSuccess) { success in
+
+            Spacer()
+        }
+        .background(Color.red)
+        .onReceive(signupViewModel.$signUpSuccess) { success in
             guard success else { return }
 
             self.dissmiss()
@@ -37,8 +52,8 @@ struct SignupView: View {
 }
 
 // How to activate this?
-//struct SignupView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SignupView()
-//    }
-//}
+struct SignupView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignupView(presentedAsModal: .constant(false))
+    }
+}
