@@ -16,9 +16,9 @@ struct SigninView: View {
 
     var body: some View {
         VStack {
-            Text("Welcome to the Marvel world")
-                       .padding()
-                       .font(.largeTitle)
+            Text("Welcome to the Marvel World")
+                .padding(.vertical, 60)
+                .font(.marvelRegular)
                        .foregroundColor(.white)
                 .multilineTextAlignment(.center)
 
@@ -28,7 +28,8 @@ struct SigninView: View {
             Button("Sign In") {
                 self.loginViewModel.buttonPressed = true
             }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40)
-                .background(Color.blue)
+                .background(Color.marvelBlue)
+                .opacity(loginViewModel.buttonEnabled ? 1 : 0.3)
                 .foregroundColor(.white)
                 .cornerRadius(40)
                 .padding(.vertical, 10)
@@ -45,31 +46,24 @@ struct SigninView: View {
                 SignupView(presentedAsModal: self.$presentingSignUpView)
             }
             Spacer()
-        }.background(Color.red)
+        }.background(Color.marvelRed)
     }
 }
 
-struct LoginButtonStyle: ButtonStyle {
+extension Font {
+    static var marvelRegular: Font {
+        Font.custom("Marvel-Regular", size: 30)
+    }
+}
 
-    @Binding var enabled: Bool
 
-    func makeBody(configuration: Self.Configuration) -> some View {
-      configuration.label
-        .background(background(configuration: configuration))
-        .foregroundColor(.white)
-        .cornerRadius(40)
-        .padding(.vertical, 10)
-        .padding(.horizontal, 60)
+extension Color {
+    static var marvelRed: Color {
+        Color(UIColor(red: 226/255.0, green: 54/255.0, blue: 54/255.0, alpha: 1.0))
     }
 
-    func background(configuration: Self.Configuration) -> Color {
-        if configuration.isPressed {
-            return Color.orange
-        } else if enabled {
-            return Color.blue
-        } else {
-            return Color.gray
-        }
+    static var marvelBlue: Color {
+        Color(UIColor(red: 81/255.0, green: 140/255.0, blue: 202/255.0, alpha: 1.0))
     }
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CDA3963EDB32AB13DAB242E /* Pods_MarvelFinalImplementationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 607C3E7E73888B449AA1D683 /* Pods_MarvelFinalImplementationTests.framework */; };
+		A40E7C69243FB5C400443A11 /* Marvel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A40E7C68243FB5C400443A11 /* Marvel-Regular.ttf */; };
 		A49B2AF124013A8A00B52626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF024013A8A00B52626 /* AppDelegate.swift */; };
 		A49B2AF324013A8A00B52626 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF224013A8A00B52626 /* SceneDelegate.swift */; };
 		A49B2AF524013A8A00B52626 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF424013A8A00B52626 /* SigninView.swift */; };
@@ -41,6 +42,7 @@
 		42518082ED1FEF278BE33D48 /* Pods-MarvelFinalImplementation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelFinalImplementation.debug.xcconfig"; path = "Target Support Files/Pods-MarvelFinalImplementation/Pods-MarvelFinalImplementation.debug.xcconfig"; sourceTree = "<group>"; };
 		53DB8414966BC6CCB384AD89 /* Pods-MarvelFinalImplementationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelFinalImplementationTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelFinalImplementationTests/Pods-MarvelFinalImplementationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		607C3E7E73888B449AA1D683 /* Pods_MarvelFinalImplementationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelFinalImplementationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A40E7C68243FB5C400443A11 /* Marvel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Regular.ttf"; sourceTree = "<group>"; };
 		A49B2AED24013A8A00B52626 /* MarvelFinalImplementation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelFinalImplementation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49B2AF024013A8A00B52626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A49B2AF224013A8A00B52626 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A40E7C67243FB59B00443A11 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A40E7C68243FB5C400443A11 /* Marvel-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		A49B2AE424013A8A00B52626 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				A49B2B1424013AE400B52626 /* API */,
+				A40E7C67243FB59B00443A11 /* fonts */,
 				A49B2AF024013A8A00B52626 /* AppDelegate.swift */,
 				A49B2AF224013A8A00B52626 /* SceneDelegate.swift */,
 				A49B2AF624013A8C00B52626 /* Assets.xcassets */,
@@ -257,6 +268,7 @@
 			files = (
 				A49B2AFD24013A8C00B52626 /* LaunchScreen.storyboard in Resources */,
 				A49B2AFA24013A8C00B52626 /* Preview Assets.xcassets in Resources */,
+				A40E7C69243FB5C400443A11 /* Marvel-Regular.ttf in Resources */,
 				A4AB490D2437D154009CD810 /* GoogleService-Info.plist in Resources */,
 				A49B2AF724013A8C00B52626 /* Assets.xcassets in Resources */,
 			);

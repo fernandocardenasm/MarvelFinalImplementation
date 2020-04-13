@@ -15,8 +15,8 @@ struct SignupView: View {
     var body: some View {
         VStack {
             Text("Sign Up to the Marvel App")
-                   .padding()
-                   .font(.largeTitle)
+                   .padding(.vertical, 60)
+                   .font(.marvelRegular)
                    .foregroundColor(.white)
             .multilineTextAlignment(.center)
 
@@ -25,7 +25,8 @@ struct SignupView: View {
             
             Button("Sign Up") {
                 self.signupViewModel.buttonPressed = true
-            }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40).background(signupViewModel.buttonEnabled ? Color.blue : Color.gray)
+            }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40).background(Color.marvelBlue)
+                .opacity(signupViewModel.buttonEnabled ? 1 : 0.3)
             .foregroundColor(.white)
             .cornerRadius(40)
             .padding(.vertical, 10)
@@ -34,7 +35,7 @@ struct SignupView: View {
 
             ActivityIndicator(shouldAnimate: $signupViewModel.buttonPressed)
 
-            Button("dismiss") { self.dissmiss() }
+            Button("Dismiss") { self.dissmiss() }
 
             Spacer()
         }
