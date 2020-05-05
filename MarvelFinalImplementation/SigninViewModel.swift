@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
 
-    private let loginService: FirebaseLoginService = FirebaseLoginServiceImpl(auth: Auth.auth())
+    private let loginService: FirebaseLoginService = FirebaseLoginServiceImpl(auth: Auth.auth(), appState: DIContainer.defaultValue.appState)
 
     // Input
     @Published var email = ""

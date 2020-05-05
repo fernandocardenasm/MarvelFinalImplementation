@@ -19,7 +19,7 @@ protocol FBAuth {
 
     func signIn(withEmail email: String, password: String, completion: DataResultCallback?)
 
-    func signOut() throws
+    func signOut() throws    
 }
 
 extension Auth: FBAuth {}
