@@ -12,42 +12,45 @@ import Firebase
 
 
 struct SigninView: View {
-    @ObservedObject private var loginViewModel = LoginViewModel()
+    @ObservedObject var loginViewModel: LoginViewModel
     @State var presentingSignUpView = false
-
+    
     var body: some View {
         VStack {
             Text("Welcome to the Marvel World")
                 .padding(.vertical, 60)
                 .font(.marvelRegular)
-                       .foregroundColor(.white)
+                .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-
-            LoginFieldsView(email: $loginViewModel.email, password: $loginViewModel.password)
+            
+            LoginFieldsView(email: $loginViewModel.email,
+                            password: $loginViewModel.password)
                 .padding(.horizontal, 60)
 
             Button("Sign In") {
-                self.loginViewModel.buttonPressed = true
-            }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40)
-                .background(Color.marvelBlue)
-                .opacity(loginViewModel.buttonEnabled ? 1 : 0.3)
+                self.loginViewModel.signinButtonPressed = true
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40)
+            .background(Color.marvelBlue)
+            .opacity(loginViewModel.singinButtonEnabled ? 1 : 0.3)
+            .foregroundColor(.white)
+            .cornerRadius(40)
+            .padding(.vertical, 10)
+            .padding(.horizontal, 60)
+            .disabled(!loginViewModel.singinButtonEnabled)
+
+            ActivityIndicator(shouldAnimate: $loginViewModel.signinButtonPressed)
+
+            Text("Do not have an account?")
                 .foregroundColor(.white)
-                .cornerRadius(40)
-                .padding(.vertical, 10)
-                .padding(.horizontal, 60)
-
-            .disabled(!loginViewModel.buttonEnabled)
-
-            ActivityIndicator(shouldAnimate: $loginViewModel.buttonPressed)
-
-            Text("Do not have an account?").foregroundColor(.white).padding()
+                .padding()
             Button("Sign up here") {
-                self.presentingSignUpView = true
-            }.sheet(isPresented: $presentingSignUpView) {
-                SignupView(presentedAsModal: self.$presentingSignUpView)
+                self.loginViewModel.signupButtonPressed.send()
             }
             Spacer()
-        }.background(Color.marvelRed)
+        }
+        .background(Color.marvelRed)
+        .onAppear{ print("Appeared") }
     }
 }
 
@@ -90,8 +93,8 @@ struct LoginFieldsView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        SigninView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SigninView()
+//    }
+//}

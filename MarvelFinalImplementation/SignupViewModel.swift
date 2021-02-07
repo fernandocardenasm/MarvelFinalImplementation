@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class SignUpViewModel: ObservableObject {
 
-    private let loginService: FirebaseLoginService = FirebaseLoginServiceImpl(auth: Auth.auth(), appState: DIContainer.defaultValue.appState)
+    private let loginService: LoginService = FirebaseLoginServiceImpl(auth: Auth.auth())
 
     // Input
     @Published var email = ""
@@ -23,7 +23,7 @@ class SignUpViewModel: ObservableObject {
     @Published var signUpSuccess = false
 
     private var cancellableSet: Set<AnyCancellable> = []
-
+    
     init() {
         // Setup isValid
         Publishers.CombineLatest(areFieldsValidPublisher(), $buttonPressed).receive(on: RunLoop.main)
@@ -55,33 +55,34 @@ class SignUpViewModel: ObservableObject {
             self?.buttonPressed = false
             },
               receiveValue: { _ in
-
         })
         .store(in: &cancellableSet)
     }
-
+    
     func isEmailValidPublisher() -> AnyPublisher<Bool, Never> {
         $email.debounce(for: 0.8, scheduler: RunLoop.main)
             .removeDuplicates()
             .map { input in
                 input.count > 5
-        }
-        .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
-
+    
     func isPasswordValidPublisher() -> AnyPublisher<Bool, Never> {
         $password.debounce(for: 0.8, scheduler: RunLoop.main)
             .removeDuplicates()
             .map { input in
                 input.count > 5
-        }.eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
-
+    
     func areFieldsValidPublisher() -> AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest(isEmailValidPublisher(), isPasswordValidPublisher()).debounce(for: 0.2, scheduler: RunLoop.main)
+        Publishers.CombineLatest(isEmailValidPublisher(),
+                                 isPasswordValidPublisher())
+            .debounce(for: 0.2, scheduler: RunLoop.main)
             .map { emailValid, passwordValid in
                 return emailValid && passwordValid
             }
-        .eraseToAnyPublisher()
+            .eraseToAnyPublisher()
     }
 }

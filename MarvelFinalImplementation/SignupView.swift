@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct SignupView: View {
-    @Binding var presentedAsModal: Bool
-    @ObservedObject private var signupViewModel = SignUpViewModel()
+    @ObservedObject var signupViewModel: SignUpViewModel = SignUpViewModel()
 
     var body: some View {
         VStack {
@@ -24,7 +23,6 @@ struct SignupView: View {
             .padding(.horizontal, 60)
             
             Button("Sign Up") {
-                self.signupViewModel.buttonPressed = true
             }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 40).background(Color.marvelBlue)
                 .opacity(signupViewModel.buttonEnabled ? 1 : 0.3)
             .foregroundColor(.white)
@@ -35,26 +33,20 @@ struct SignupView: View {
 
             ActivityIndicator(shouldAnimate: $signupViewModel.buttonPressed)
 
-            Button("Dismiss") { self.dissmiss() }
+            Button("Dismiss") { }
 
             Spacer()
         }
         .background(Color.red)
         .onReceive(signupViewModel.$signUpSuccess) { success in
             guard success else { return }
-
-            self.dissmiss()
         }
-    }
-
-    func dissmiss() {
-        presentedAsModal = false
     }
 }
 
 // How to activate this?
-struct SignupView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignupView(presentedAsModal: .constant(false))
-    }
-}
+//struct SignupView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignupView()
+//    }
+//}

@@ -28,7 +28,7 @@ struct HomeView: View {
 }
 
 class HomeViewModel: ObservableObject {
-    private let loginService: FirebaseLoginService = FirebaseLoginServiceImpl(auth: Auth.auth(), appState: DIContainer.defaultValue.appState)
+    private let loginService: LoginService = FirebaseLoginServiceImpl(auth: Auth.auth())
     
     var buttonPressed = PassthroughSubject<Void, Never>()
     
@@ -44,5 +44,39 @@ class HomeViewModel: ObservableObject {
                 
             }
         }.store(in: &cancellableSet)
+    }
+}
+
+
+class LoginNavigationStore: ObservableObject {
+    enum CurrentView {
+        case signin
+        case signup
+    }
+    
+    @Published var currentView: CurrentView? = nil
+    
+    @ViewBuilder
+    var view: some View {
+        switch currentView {
+        case .signin:
+            SignupView()
+        case .signup:
+            SignupView()
+        case .none:
+            EmptyView()
+        }
+    }
+}
+
+struct LoginNavigationView: View {
+    @ObservedObject var store: LoginNavigationStore
+    
+    var body: some View {
+        store.view
+            .transition(AnyTransition
+                            .opacity
+                            .combined(with: .move(edge: .trailing))
+        ).id(UUID())
     }
 }

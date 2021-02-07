@@ -10,6 +10,7 @@
 		0CDA3963EDB32AB13DAB242E /* Pods_MarvelFinalImplementationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 607C3E7E73888B449AA1D683 /* Pods_MarvelFinalImplementationTests.framework */; };
 		A40E7C69243FB5C400443A11 /* Marvel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A40E7C68243FB5C400443A11 /* Marvel-Regular.ttf */; };
 		A428330A244841CF0068B7B2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4283309244841CF0068B7B2 /* MainView.swift */; };
+		A47380D125BF1A9100FB4784 /* c.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47380D025BF1A9100FB4784 /* c.swift */; };
 		A49B2AF124013A8A00B52626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF024013A8A00B52626 /* AppDelegate.swift */; };
 		A49B2AF324013A8A00B52626 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF224013A8A00B52626 /* SceneDelegate.swift */; };
 		A49B2AF524013A8A00B52626 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B2AF424013A8A00B52626 /* SigninView.swift */; };
@@ -24,7 +25,7 @@
 		A4E56E8D243BBE430028894E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E8C243BBE430028894E /* SignupView.swift */; };
 		A4E56E8F243BBE8E0028894E /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E8E243BBE8E0028894E /* SignupViewModel.swift */; };
 		A4E56E91243BBEF00028894E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E90243BBEF00028894E /* ActivityIndicator.swift */; };
-		A4E56E93243BBF180028894E /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E92243BBF180028894E /* SigninViewModel.swift */; };
+		A4E56E93243BBF180028894E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E56E92243BBF180028894E /* LoginViewModel.swift */; };
 		A4EF3E10244640A000A35D9D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EF3E0F244640A000A35D9D /* HomeView.swift */; };
 		F8D007463BE0D4C54FB3CE39 /* Pods_MarvelFinalImplementation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F9DDA157C70C893AC404B9 /* Pods_MarvelFinalImplementation.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		607C3E7E73888B449AA1D683 /* Pods_MarvelFinalImplementationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelFinalImplementationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A40E7C68243FB5C400443A11 /* Marvel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Regular.ttf"; sourceTree = "<group>"; };
 		A4283309244841CF0068B7B2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A47380D025BF1A9100FB4784 /* c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = c.swift; sourceTree = "<group>"; };
 		A49B2AED24013A8A00B52626 /* MarvelFinalImplementation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelFinalImplementation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49B2AF024013A8A00B52626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A49B2AF224013A8A00B52626 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +66,7 @@
 		A4E56E8C243BBE430028894E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A4E56E8E243BBE8E0028894E /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		A4E56E90243BBEF00028894E /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		A4E56E92243BBF180028894E /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
+		A4E56E92243BBF180028894E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A4EF3E0F244640A000A35D9D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C1F9DDA157C70C893AC404B9 /* Pods_MarvelFinalImplementation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelFinalImplementation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D15AD97F4F9A7C029B92C4 /* Pods-MarvelFinalImplementation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelFinalImplementation.release.xcconfig"; path = "Target Support Files/Pods-MarvelFinalImplementation/Pods-MarvelFinalImplementation.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,12 +145,13 @@
 				A49B2AF824013A8C00B52626 /* Preview Content */,
 				A4B55F5624029AA800519139 /* LoginService.swift */,
 				A49B2AF424013A8A00B52626 /* SigninView.swift */,
-				A4E56E92243BBF180028894E /* SigninViewModel.swift */,
+				A4E56E92243BBF180028894E /* LoginViewModel.swift */,
 				A4E56E8C243BBE430028894E /* SignupView.swift */,
 				A4E56E8E243BBE8E0028894E /* SignupViewModel.swift */,
 				A4E56E90243BBEF00028894E /* ActivityIndicator.swift */,
 				A4EF3E0F244640A000A35D9D /* HomeView.swift */,
 				A4283309244841CF0068B7B2 /* MainView.swift */,
+				A47380D025BF1A9100FB4784 /* c.swift */,
 			);
 			path = MarvelFinalImplementation;
 			sourceTree = "<group>";
@@ -361,8 +364,9 @@
 				A4E56E8D243BBE430028894E /* SignupView.swift in Sources */,
 				A428330A244841CF0068B7B2 /* MainView.swift in Sources */,
 				A49B2AF124013A8A00B52626 /* AppDelegate.swift in Sources */,
-				A4E56E93243BBF180028894E /* SigninViewModel.swift in Sources */,
+				A4E56E93243BBF180028894E /* LoginViewModel.swift in Sources */,
 				A4E56E8F243BBE8E0028894E /* SignupViewModel.swift in Sources */,
+				A47380D125BF1A9100FB4784 /* c.swift in Sources */,
 				A4B55F5724029AA800519139 /* LoginService.swift in Sources */,
 				A4EF3E10244640A000A35D9D /* HomeView.swift in Sources */,
 				A49B2AF324013A8A00B52626 /* SceneDelegate.swift in Sources */,
@@ -527,6 +531,7 @@
 				DEVELOPMENT_TEAM = SAR2G9PZXH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MarvelFinalImplementation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,6 +553,7 @@
 				DEVELOPMENT_TEAM = SAR2G9PZXH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MarvelFinalImplementation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

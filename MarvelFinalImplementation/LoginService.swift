@@ -10,7 +10,9 @@ import Combine
 import FirebaseAuth
 import Foundation
 
-protocol FirebaseLoginService {
+protocol LoginService {
+    var loggedIn: Bool { get }
+    
     func createUser(withEmail email: String, password: String) -> AnyPublisher<Void, Error>
 
     func signIn(withEmail email: String, password: String) -> AnyPublisher<Void, Error>
@@ -18,16 +20,14 @@ protocol FirebaseLoginService {
     func signOut() throws
 }
 
-struct FirebaseLoginServiceImpl<Authentication: FBAuth>: FirebaseLoginService {
+struct FirebaseLoginServiceImpl<Authentication: FBAuth>: LoginService {
     let auth: Authentication
-    let appState: Store<AppState>
 
-    init(auth: Authentication, appState: Store<AppState>) {
+    init(auth: Authentication) {
         self.auth = auth
-        self.appState = appState
     }
-    
-    private var loggedIn: Bool {
+
+    var loggedIn: Bool {
         auth.currentUser != nil
     }
         
@@ -59,7 +59,6 @@ struct FirebaseLoginServiceImpl<Authentication: FBAuth>: FirebaseLoginService {
                         promise(.failure(error))
                     }
                     else if let _ = authDataResult {
-                        self.appState.value.login.loggedIn = self.loggedIn
                         promise(.success(()))
                     }
                     else {
@@ -73,7 +72,6 @@ struct FirebaseLoginServiceImpl<Authentication: FBAuth>: FirebaseLoginService {
 
     func signOut() throws {
         try auth.signOut()
-        appState.value.login.loggedIn = loggedIn
     }
 }
 

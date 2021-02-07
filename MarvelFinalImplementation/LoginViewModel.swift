@@ -11,32 +11,33 @@ import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
 
-    private let loginService: FirebaseLoginService = FirebaseLoginServiceImpl(auth: Auth.auth(), appState: DIContainer.defaultValue.appState)
+    private let loginService: LoginService = FirebaseLoginServiceImpl(auth: Auth.auth())
 
     // Input
     @Published var email = ""
     @Published var password = ""
-    @Published var buttonPressed = false
+    @Published var signinButtonPressed = false
 
     // Oupt
-    @Published var buttonEnabled = false
+    @Published var singinButtonEnabled = false
+    var loginFinished = PassthroughSubject<Void, Never>()
+    var signupButtonPressed = PassthroughSubject<Void, Never>()
 
     private var cancellableSet: Set<AnyCancellable> = []
 
     init() {
         // Setup isValid
-        Publishers.CombineLatest(areFieldsValidPublisher(), $buttonPressed).receive(on: RunLoop.main)
+        Publishers.CombineLatest(areFieldsValidPublisher(), $signinButtonPressed).receive(on: RunLoop.main)
             .map { fieldsValid, pressed in
                 fieldsValid && !pressed
-        }
-        .assign(to: \.buttonEnabled, on: self)
-        .store(in: &cancellableSet)
-
-        $buttonPressed.sink { [weak self] pressed in
+            }
+            .assign(to: \.singinButtonEnabled, on: self)
+            .store(in: &cancellableSet)
+        
+        $signinButtonPressed.sink { [weak self] pressed in
             guard pressed else { return }
-
+            
             self?.signIn()
-
         }
         .store(in: &cancellableSet)
     }
@@ -48,10 +49,11 @@ class LoginViewModel: ObservableObject {
                 switch result {
                 case .finished:
                     print("Login Successful")
+                    self?.loginFinished.send()
                 case .failure(let error):
                     print("SignIn - Error: \(error)")
                 }
-                self?.buttonPressed = false
+                self?.signinButtonPressed = false
                 },
                   receiveValue: { _ in
 
